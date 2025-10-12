@@ -1,0 +1,2 @@
+from .bisection_multi import bisection_multi
+from .golden_ratio_multi import golden_ratio_multi
