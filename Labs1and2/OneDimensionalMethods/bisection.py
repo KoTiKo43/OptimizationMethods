@@ -1,5 +1,5 @@
 from typing import Callable
-from main import SearchResult
+from Labs1and2.main import SearchResult
 
 def bisection(function: Callable[[float], float], lhs: float, rhs: float, eps: float = 1e-6, 
               num_iterations: int = 1000) -> SearchResult:

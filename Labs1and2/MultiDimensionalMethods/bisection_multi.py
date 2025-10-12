@@ -1,6 +1,6 @@
 from typing import Callable
 import numpy as np
-from main import SearchResult
+from Labs1and2.main import SearchResult
 
 def bisection_multi(function: Callable[[float], float], lhs: np.ndarray, rhs: np.ndarray, eps: float = 1e-6, 
               num_iterations: int = 1000) -> SearchResult:

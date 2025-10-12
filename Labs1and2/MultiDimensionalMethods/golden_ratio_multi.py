@@ -1,6 +1,6 @@
 from typing import Callable
 import numpy as np
-from main import SearchResult
+from Labs1and2.main import SearchResult
 
 #PHI = 1.61803398874989484820
 PSI = 0.61803398874989484820

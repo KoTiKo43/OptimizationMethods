@@ -1,5 +1,5 @@
 from typing import Callable
-from main import SearchResult
+from Labs1and2.main import SearchResult
 
 def fibonacci(function: Callable[[float], float], lhs: float, rhs: float, eps: float = 1e-6) -> SearchResult:
     lhs, rhs = (rhs, lhs) if lhs > rhs else (lhs, rhs)
