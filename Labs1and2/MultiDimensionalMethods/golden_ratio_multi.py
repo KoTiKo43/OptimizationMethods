@@ -1,12 +1,20 @@
 from typing import Callable
 import numpy as np
-from Labs1and2.main import SearchResult
+from Common.datatypes import SearchResult
 
 #PHI = 1.61803398874989484820
 PSI = 0.61803398874989484820
 
 def golden_ratio_multi(function: Callable[[float], float], lhs: np.ndarray, rhs: np.ndarray, eps: float = 1e-6,
                  num_iterations: int = 1000) -> SearchResult:
+    if lhs.shape != rhs.shape:
+        return SearchResult(
+        method_name="error",
+        iterations=0,
+        function_probes=0,
+        accuracy=0,
+        result=0
+    )
     
     cur_lhs = lhs.copy()
     cur_rhs = rhs.copy()
@@ -33,7 +41,7 @@ def golden_ratio_multi(function: Callable[[float], float], lhs: np.ndarray, rhs:
         index += 1
 
     return SearchResult(
-        method_name="golden_ratio",
+        method_name="golden_ratio multi",
         iterations=index,
         function_probes=index + 2,
         accuracy=np.linalg.norm(cur_rhs - cur_lhs) / 2,

@@ -1,5 +1,5 @@
 from typing import Callable
-from Labs1and2.main import SearchResult
+from Common.datatypes import SearchResult
 
 #PHI = 1.61803398874989484820
 PSI = 0.61803398874989484820

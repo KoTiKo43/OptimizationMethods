@@ -1,6 +1,6 @@
 from typing import Callable
 import numpy as np
-from Labs1and2.main import SearchResult
+from Common.datatypes import SearchResult
 
 def bisection_multi(function: Callable[[float], float], lhs: np.ndarray, rhs: np.ndarray, eps: float = 1e-6, 
               num_iterations: int = 1000) -> SearchResult:
@@ -32,7 +32,7 @@ def bisection_multi(function: Callable[[float], float], lhs: np.ndarray, rhs: np
 #    print(f'bisection: Function probe {index * 2}')
 
     return SearchResult(
-        method_name="bisection",
+        method_name="bisection multi",
         iterations=index,
         function_probes=index * 2,
         accuracy=np.linalg.norm(cur_rhs - cur_lhs) / 2,
