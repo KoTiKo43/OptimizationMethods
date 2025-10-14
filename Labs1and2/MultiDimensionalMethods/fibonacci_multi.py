@@ -56,6 +56,6 @@ def fibonacci_multi(function: Callable[[float], float], lhs: float, rhs: float, 
         method_name="fibonacci multi",
         iterations=iters,
         function_probes=iters + 2,
-        accuracy=np.linalg.norm(rhs - lhs) / 2,
+        accuracy=np.linalg.norm(cur_rhs - cur_lhs) / 2,
         result=(cur_lhs + cur_rhs) * 0.5
     )
