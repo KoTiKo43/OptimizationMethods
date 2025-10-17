@@ -27,11 +27,13 @@ def methods_multi_dim():
     result_bisection_multi = MultiDimensionalMethods.bisection_multi(quadratic_sphere, lhs, rhs)
     result_golden_ratio_multi = MultiDimensionalMethods.golden_ratio_multi(quadratic_sphere, lhs, rhs)
     result_fibonacci_multi = MultiDimensionalMethods.fibonacci_multi(quadratic_sphere, lhs, rhs)
+    result_per_coord_descent = MultiDimensionalMethods.per_coord_descent(quadratic_sphere, lhs)
     
     print("Results:")
     print(result_bisection_multi)
     print(result_golden_ratio_multi)
     print(result_fibonacci_multi)
+    print(result_per_coord_descent)
 
 
 if __name__ == "__main__":
