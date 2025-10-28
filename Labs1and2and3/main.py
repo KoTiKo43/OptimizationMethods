@@ -29,6 +29,7 @@ def methods_multi_dim():
     result_fibonacci_multi = MultiDimensionalMethods.fibonacci_multi(quadratic_sphere, lhs, rhs)
     result_per_coord_descent = MultiDimensionalMethods.per_coord_descent(quadratic_sphere, lhs)
     result_gradient_descent = MultiDimensionalMethods.gradient_descent(quadratic_sphere, lhs)
+    result_conjugate_gradient = MultiDimensionalMethods.conjugate_gradient(quadratic_sphere, lhs)
     
     print("Results:")
     print(result_bisection_multi)
@@ -36,6 +37,7 @@ def methods_multi_dim():
     print(result_fibonacci_multi)
     print(result_per_coord_descent)
     print(result_gradient_descent)
+    print(result_conjugate_gradient)
 
 
 if __name__ == "__main__":
