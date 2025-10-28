@@ -15,7 +15,7 @@ def compute_gradient(f: Callable[[float], float], x: np.ndarray, dx: float = 1e-
             
         return grad   
     
-def compute_hessian(f: Callable[[float], float], x: np.ndarray, func_probes: int, dx: float = 1e-6):
+def compute_hessian(f: Callable[[float], float], x: np.ndarray, func_probes: int, dx: float = 1e-6) -> np.ndarray:
     n = len(x)
     hessian = np.zeros((n, n))
     
