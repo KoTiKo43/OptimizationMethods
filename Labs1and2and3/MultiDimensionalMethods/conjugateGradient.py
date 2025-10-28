@@ -57,5 +57,4 @@ def conjugate_gradient(function: Callable[[float], float], x0: np.ndarray, max_i
         accuracy=np.linalg.norm(x_cur - x_prev),
         result=x_cur
     )
-        
     

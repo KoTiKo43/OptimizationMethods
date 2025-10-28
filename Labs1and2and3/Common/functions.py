@@ -15,7 +15,7 @@ def compute_gradient(f: Callable[[float], float], x: np.ndarray, dx: float = 1e-
             
         return grad   
     
-def compute_hessian(f: Callable[[float], float], x: np.ndarray, dx: float = 1e-6):
+def compute_hessian(f: Callable[[float], float], x: np.ndarray, func_probes: int, dx: float = 1e-6):
     n = len(x)
     hessian = np.zeros((n, n))
     
@@ -27,6 +27,8 @@ def compute_hessian(f: Callable[[float], float], x: np.ndarray, dx: float = 1e-6
                 x_plus[i] += dx
                 x_minus[i] -= dx
                 hessian[i, i] = (f(x_plus) - 2 * f(x) + f(x_minus)) / dx**2
+                
+                func_probes += 3
             else:
                 x_pp = x.copy(); x_pp[i] += dx; x_pp[j] += dx
                 x_pm = x.copy(); x_pm[i] += dx; x_pm[j] -= dx
@@ -35,5 +37,7 @@ def compute_hessian(f: Callable[[float], float], x: np.ndarray, dx: float = 1e-6
                 
                 hessian[i, j] = (f(x_pp) - f(x_pm) + f(x_mm) - f(x_mp)) / (4 * dx**2)
                 hessian[j, i] = hessian[i, j] # Пользуемся симметрией матрицы Гессе
+                
+                func_probes += 4
                 
     return hessian
