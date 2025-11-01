@@ -2,7 +2,7 @@ from typing import Callable
 import numpy as np
 from Common.datatypes import SearchResult
 
-def bisection_multi(function: Callable[[float], float], lhs: np.ndarray, rhs: np.ndarray, eps: float = 1e-6, 
+def bisection_multi(function: Callable[[SearchResult], float], lhs: np.ndarray, rhs: np.ndarray, eps: float = 1e-6, 
               num_iterations: int = 1000) -> SearchResult:
     
     if lhs.shape != rhs.shape:
@@ -38,4 +38,3 @@ def bisection_multi(function: Callable[[float], float], lhs: np.ndarray, rhs: np
         accuracy=np.linalg.norm(cur_rhs - cur_lhs) / 2,
         result=(cur_lhs + cur_rhs) * 0.5
     )
-
