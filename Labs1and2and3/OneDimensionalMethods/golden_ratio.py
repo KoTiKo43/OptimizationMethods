@@ -15,7 +15,7 @@ def golden_ratio(function: Callable[[SearchResult], float], lhs: float, rhs: flo
     fr = function (xr)
 
     index = 0
-    while index < num_iterations and abs(rhs - lhs) >= 2*eps:
+    while index < num_iterations and abs(rhs - lhs) >= 2 * eps:
         if fl > fr:
             lhs = xl
             xl = xr
@@ -35,6 +35,6 @@ def golden_ratio(function: Callable[[SearchResult], float], lhs: float, rhs: flo
         method_name="golden_ratio",
         iterations=index,
         function_probes=index + 2,
-        accuracy=abs(rhs - lhs) / 2,
+        accuracy=abs(rhs - lhs) * 0.5,
         result=(lhs + rhs) * 0.5
     )

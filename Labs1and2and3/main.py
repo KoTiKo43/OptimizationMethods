@@ -3,6 +3,8 @@ from Common.datatypes import SearchResult
 import OneDimensionalMethods
 import MultiDimensionalMethods
 
+#TODO pip install pydantic
+
 def test_func(x: float) -> float:
     return (x - 2)**2 + 1
 
@@ -26,15 +28,18 @@ def equality_constraint(x: np.ndarray) -> float:
     return x[0] + x[1] - 1
 
 def methods_one_dim():
-    lhs, rhs = 0, 5
-    result_bisection = OneDimensionalMethods.bisection(test_func, lhs, rhs)
-    result_golden_ratio = OneDimensionalMethods.golden_ratio(test_func, lhs, rhs)
-    result_fibonacci = OneDimensionalMethods.fibonacci(test_func, lhs, rhs)
+    lhs, rhs = 0.0, 5.0
+    # print('\n'.join(map(lambda val:str(isinstance(val, float)), (lhs, rhs))))
+    eps = 1e-6
+    result_bisection: SearchResult = OneDimensionalMethods.bisection(test_func, lhs, rhs, eps)
+    result_golden_ratio: SearchResult = OneDimensionalMethods.golden_ratio(test_func, lhs, rhs, eps)
+    result_fibonacci: SearchResult = OneDimensionalMethods.fibonacci(test_func, lhs, rhs, eps * 2.5)
     
     print("Results:")
     print(result_bisection)
     print(result_golden_ratio)
     print(result_fibonacci)
+    print(f'Accuracy divercity between golden_ratio and fibonacci: {abs(result_golden_ratio.accuracy - result_fibonacci.accuracy)}')
 
 def methods_multi_dim():
     lhs = np.array((0.0, 0.0, 0.0))

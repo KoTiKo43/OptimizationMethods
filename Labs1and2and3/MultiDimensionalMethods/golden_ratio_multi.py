@@ -44,6 +44,6 @@ def golden_ratio_multi(function: Callable[[SearchResult], float], lhs: np.ndarra
         method_name="golden_ratio multi",
         iterations=index,
         function_probes=index + 2,
-        accuracy=np.linalg.norm(cur_rhs - cur_lhs) / 2,
+        accuracy=np.linalg.norm(cur_rhs - cur_lhs) * 0.5,
         result=(cur_lhs + cur_rhs) * 0.5
     )
