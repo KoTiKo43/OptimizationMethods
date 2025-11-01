@@ -8,13 +8,7 @@ def penalty_internal(function: Callable[[float], float], constraints: List[Calla
     for constraint in constraints:
         if constraint(x0) > 0:
             # Ошибка: начальная точка не удовлетворяет ограничениям
-            return SearchResult(
-                method_name='internal_penalty',
-                iterations=-1,
-                function_probes=-1,
-                accuracy=-1,
-                result=-1
-            )
+            return SearchResult.error("internal penalty: starting point invalid")
             
     def penalty_function(x):
         penalty = 0.0

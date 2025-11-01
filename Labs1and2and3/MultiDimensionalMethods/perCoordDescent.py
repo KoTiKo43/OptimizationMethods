@@ -50,9 +50,9 @@ def per_coord_descent(function: Callable[[np.ndarray], float], x0: np.ndarray, m
             break
         
     return SearchResult(
-        method_name = "per_coordinate_descent",
-        iterations = iters,
-        function_probes = func_probes,
-        accuracy = np.linalg.norm(x_cur - x_prev),
-        result = x_cur
+        method_name="per_coordinate_descent",
+        iterations=iters,
+        function_probes=func_probes,
+        accuracy=np.linalg.norm(x_cur - x_prev),
+        result=x_cur
     )

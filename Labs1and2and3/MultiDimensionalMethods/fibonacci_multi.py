@@ -4,7 +4,7 @@ from Common.datatypes import SearchResult
 
 def fibonacci_multi(function: Callable[[np.ndarray], float], lhs: np.ndarray, rhs: np.ndarray, eps: float = 1e-6) -> SearchResult:
     if lhs.shape != rhs.shape:
-        return SearchResult.error()
+        return SearchResult.error("shape mismatch")
         
     cur_lhs = lhs.copy()
     cur_rhs = rhs.copy()

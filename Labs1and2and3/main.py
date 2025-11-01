@@ -1,7 +1,7 @@
 import numpy as np
 from Common.datatypes import SearchResult
-import OneDimensionalMethods
-import MultiDimensionalMethods
+import OneDimensionalMethods as odm
+import MultiDimensionalMethods as mdm
 
 #TODO pip install pydantic
 
@@ -24,16 +24,13 @@ def constraint2(x: np.ndarray) -> float:
 def constraint3(x: np.ndarray) -> float:
     return -x[1]
 
-def equality_constraint(x: np.ndarray) -> float:
-    return x[0] + x[1] - 1
-
 def methods_one_dim():
     lhs, rhs = 0.0, 5.0
     # print('\n'.join(map(lambda val:str(isinstance(val, float)), (lhs, rhs))))
     eps = 1e-6
-    result_bisection: SearchResult = OneDimensionalMethods.bisection(test_func, lhs, rhs, eps)
-    result_golden_ratio: SearchResult = OneDimensionalMethods.golden_ratio(test_func, lhs, rhs, eps)
-    result_fibonacci: SearchResult = OneDimensionalMethods.fibonacci(test_func, lhs, rhs, eps * 2.5)
+    result_bisection: SearchResult = odm.bisection(test_func, lhs, rhs, eps)
+    result_golden_ratio: SearchResult = odm.golden_ratio(test_func, lhs, rhs, eps)
+    result_fibonacci: SearchResult = odm.fibonacci(test_func, lhs, rhs, eps * 2.5)
     
     print("Results:")
     print(result_bisection)
@@ -44,20 +41,23 @@ def methods_one_dim():
 def methods_multi_dim():
     lhs = np.array((0.0, 0.0, 0.0))
     rhs = np.array((5.0, 5.0, 5.0))
-    result_bisection_multi = MultiDimensionalMethods.bisection_multi(quadratic_sphere, lhs, rhs)
-    result_golden_ratio_multi = MultiDimensionalMethods.golden_ratio_multi(quadratic_sphere, lhs, rhs)
-    result_fibonacci_multi = MultiDimensionalMethods.fibonacci_multi(quadratic_sphere, lhs, rhs)
+    eps = 1e-6
+    result_bisection_multi = mdm.bisection_multi(quadratic_sphere, lhs, rhs, eps)
+    result_golden_ratio_multi = mdm.golden_ratio_multi(quadratic_sphere, lhs, rhs, eps)
+    result_fibonacci_multi = mdm.fibonacci_multi(quadratic_sphere, lhs, rhs, eps * 2.5)
     
-    result_per_coord_descent = MultiDimensionalMethods.per_coord_descent(quadratic_sphere, lhs)
-    result_gradient_descent = MultiDimensionalMethods.gradient_descent(quadratic_sphere, lhs)
-    result_conjugate_gradient = MultiDimensionalMethods.conjugate_gradient(quadratic_sphere, lhs)
-    result_method_newton_raphson = MultiDimensionalMethods.method_newton_raphson(quadratic_sphere, lhs)
+    result_per_coord_descent = mdm.per_coord_descent(quadratic_sphere, lhs)
+    result_gradient_descent = mdm.gradient_descent(quadratic_sphere, lhs)
+    result_conjugate_gradient = mdm.conjugate_gradient(quadratic_sphere, lhs)
+    result_method_newton_raphson = mdm.method_newton_raphson(quadratic_sphere, lhs)
     
     x0_internal = np.array((0.5, 0.2))
     x0_external = np.array((2.0, 2.0))
-    result_penalty_internal = MultiDimensionalMethods.penalty_internal(quadratic_sum, constraints=[constraint1, constraint2, constraint3], x0=x0_internal)
-    result_penalty_external = MultiDimensionalMethods.penalty_external(quadratic_sum, inequality_constraints=[constraint2, constraint3], 
-                                                                       equality_constraints=[equality_constraint], x0=x0_external)
+    result_penalty_internal = mdm.penalty_internal(quadratic_sum, 
+                                                   constraints=[constraint1, constraint2, constraint3], x0=x0_internal)
+    result_penalty_external = mdm.penalty_external(quadratic_sum, 
+                                                   inequality_constraints=[constraint2, constraint3], 
+                                                   equality_constraints=[constraint1], x0=x0_external)
     
     print("Results:")
     print(result_bisection_multi)

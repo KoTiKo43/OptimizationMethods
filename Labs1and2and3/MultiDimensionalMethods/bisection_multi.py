@@ -6,7 +6,7 @@ def bisection_multi(function: Callable[[np.ndarray], float], lhs: np.ndarray, rh
               num_iterations: int = 1000) -> SearchResult:
     
     if lhs.shape != rhs.shape:
-        return SearchResult.error()
+        return SearchResult.error("shape mismatch")
 
     dir_vec = np.linalg.norm(rhs - lhs) * 0.1 * eps
     
