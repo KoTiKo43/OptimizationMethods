@@ -2,15 +2,9 @@ from typing import Callable
 import numpy as np
 from Common.datatypes import SearchResult
 
-def fibonacci_multi(function: Callable[[SearchResult], float], lhs: np.ndarray, rhs: np.ndarray, eps: float = 1e-6) -> SearchResult:
+def fibonacci_multi(function: Callable[[np.ndarray], float], lhs: np.ndarray, rhs: np.ndarray, eps: float = 1e-6) -> SearchResult:
     if lhs.shape != rhs.shape:
-        return SearchResult(
-        method_name="error",
-        iterations=0,
-        function_probes=0,
-        accuracy=0,
-        result=0
-    )
+        return SearchResult.error()
         
     cur_lhs = lhs.copy()
     cur_rhs = rhs.copy()

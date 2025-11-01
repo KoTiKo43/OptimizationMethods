@@ -5,16 +5,10 @@ from Common.datatypes import SearchResult
 #PHI = 1.61803398874989484820
 PSI = 0.61803398874989484820
 
-def golden_ratio_multi(function: Callable[[SearchResult], float], lhs: np.ndarray, rhs: np.ndarray, eps: float = 1e-6,
+def golden_ratio_multi(function: Callable[[np.ndarray], float], lhs: np.ndarray, rhs: np.ndarray, eps: float = 1e-6,
                  num_iterations: int = 1000) -> SearchResult:
     if lhs.shape != rhs.shape:
-        return SearchResult(
-        method_name="error",
-        iterations=0,
-        function_probes=0,
-        accuracy=0,
-        result=0
-    )
+        return SearchResult.error()
     
     cur_lhs = lhs.copy()
     cur_rhs = rhs.copy()
