@@ -4,7 +4,7 @@ from Common.datatypes import SearchResult
 from Common.functions import compute_gradient
 from OneDimensionalMethods import fibonacci
 
-def conjugate_gradient(function: Callable[[float], float], x0: np.ndarray, max_iters: int = 1000, eps: float = 1e-6) -> SearchResult:
+def conjugate_gradient(function: Callable[[np.ndarray], float], x0: np.ndarray, max_iters: int = 1000, eps: float = 1e-6) -> SearchResult:
         
     x_cur = x0.copy()
     iters = 0
