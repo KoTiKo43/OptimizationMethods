@@ -1,7 +1,7 @@
 from typing import Callable
 from Common.datatypes import SearchResult
 
-def bisection(function: Callable[[float], float], lhs: float, rhs: float, eps: float = 1e-6, 
+def bisection(function: Callable[[SearchResult], float], lhs: float, rhs: float, eps: float = 1e-6, 
               num_iterations: int = 1000) -> SearchResult:
     
     lhs, rhs = (rhs, lhs) if lhs > rhs else (lhs, rhs)

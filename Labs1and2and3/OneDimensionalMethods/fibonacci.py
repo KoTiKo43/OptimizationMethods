@@ -1,7 +1,7 @@
 from typing import Callable
 from Common.datatypes import SearchResult
 
-def fibonacci(function: Callable[[float], float], lhs: float, rhs: float, eps: float = 1e-6) -> SearchResult:
+def fibonacci(function: Callable[[SearchResult], float], lhs: float, rhs: float, eps: float = 1e-6) -> SearchResult:
     lhs, rhs = (rhs, lhs) if lhs > rhs else (lhs, rhs)
 
     fib_n0, fib_n1, fib_n2 = 1.0, 1.0, 2.0

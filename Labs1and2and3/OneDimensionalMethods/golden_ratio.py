@@ -4,7 +4,7 @@ from Common.datatypes import SearchResult
 #PHI = 1.61803398874989484820
 PSI = 0.61803398874989484820
 
-def golden_ratio(function: Callable[[float], float], lhs: float, rhs: float, eps: float = 1e-6,
+def golden_ratio(function: Callable[[SearchResult], float], lhs: float, rhs: float, eps: float = 1e-6,
                  num_iterations: int = 1000) -> SearchResult:
     
     lhs, rhs = (rhs, lhs) if lhs > rhs else (lhs, rhs)
