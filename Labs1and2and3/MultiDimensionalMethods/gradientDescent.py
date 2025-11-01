@@ -5,7 +5,6 @@ from Common.functions import compute_gradient
 from OneDimensionalMethods import fibonacci
 
 def gradient_descent(function: Callable[[float], float], x0: np.ndarray, max_iters: int = 1000, eps: float = 1e-6) -> SearchResult:
-    n = len(x0) # Размерность
     x_cur = x0.copy()
     func_probes = 0
     iters = 0
