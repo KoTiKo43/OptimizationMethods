@@ -9,12 +9,13 @@ def per_coord_descent(function: Callable[[np.ndarray], float], x0: np.ndarray, m
     x_cur = x0.copy()
     func_probes = 0
     iters = 0
+
+    e_j = np.zeros(n)
     
     for _ in range(max_iters):
         x_prev = x_cur.copy()
         
         for j in range(n):
-            e_j = np.zeros(n) # Единичный вектор для текущей координаты
             e_j[j] = 1.0
             
             xl = x_cur - eps * e_j
@@ -43,6 +44,8 @@ def per_coord_descent(function: Callable[[np.ndarray], float], x0: np.ndarray, m
             func_probes += fib_result.function_probes
             
             x_cur[j] = fib_result.result
+
+            e_j[j] = 0
                 
         iters += 1
         

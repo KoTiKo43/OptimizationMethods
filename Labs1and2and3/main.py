@@ -47,17 +47,17 @@ def methods_multi_dim():
     result_fibonacci_multi = mdm.fibonacci_multi(quadratic_sphere, lhs, rhs, eps * 2.5)
     
     result_per_coord_descent = mdm.per_coord_descent(quadratic_sphere, lhs)
-    result_gradient_descent = mdm.gradient_descent(quadratic_sphere, lhs)
-    result_conjugate_gradient = mdm.conjugate_gradient(quadratic_sphere, lhs)
-    result_method_newton_raphson = mdm.method_newton_raphson(quadratic_sphere, lhs)
+    #result_gradient_descent = mdm.gradient_descent(quadratic_sphere, lhs)
+    #result_conjugate_gradient = mdm.conjugate_gradient(quadratic_sphere, lhs)
+    #result_method_newton_raphson = mdm.method_newton_raphson(quadratic_sphere, lhs)
     
     x0_internal = np.array((0.5, 0.2))
     x0_external = np.array((2.0, 2.0))
-    result_penalty_internal = mdm.penalty_internal(quadratic_sum, 
-                                                   constraints=[constraint1, constraint2, constraint3], x0=x0_internal)
-    result_penalty_external = mdm.penalty_external(quadratic_sum, 
-                                                   inequality_constraints=[constraint2, constraint3], 
-                                                   equality_constraints=[constraint1], x0=x0_external)
+    #result_penalty_internal = mdm.penalty_internal(quadratic_sum, 
+    #                                               constraints=[constraint1, constraint2, constraint3], x0=x0_internal)
+    #result_penalty_external = mdm.penalty_external(quadratic_sum, 
+    #                                               inequality_constraints=[constraint2, constraint3], 
+    #                                               equality_constraints=[constraint1], x0=x0_external)
     
     print("Results:")
     print(result_bisection_multi)
@@ -65,13 +65,13 @@ def methods_multi_dim():
     print(result_fibonacci_multi)
     
     print(result_per_coord_descent)
-    print(result_gradient_descent)
-    print(result_conjugate_gradient)
-    print(result_method_newton_raphson)
+    #print(result_gradient_descent)
+    #print(result_conjugate_gradient)
+    #print(result_method_newton_raphson)
     
-    print("Penalty functions:")
-    print(result_penalty_internal)
-    print(result_penalty_external)
+    #print("Penalty functions:")
+    #print(result_penalty_internal)
+    #print(result_penalty_external)
 
 
 if __name__ == "__main__":

@@ -7,19 +7,21 @@ def bisection_multi(function: Callable[[np.ndarray], float], lhs: np.ndarray, rh
     
     if lhs.shape != rhs.shape:
         return SearchResult.error("shape mismatch")
-
-    dir_vec = np.linalg.norm(rhs - lhs) * 0.1 * eps
     
     cur_lhs = lhs.copy()
     cur_rhs = rhs.copy()
 
+    dir_vec = (cur_rhs - cur_lhs) / np.linalg.norm(cur_rhs - cur_lhs) * 0.1 * eps
+
     index = 0
-    while index < num_iterations and np.linalg.norm(cur_rhs - cur_lhs) >= 2*eps:
+    while index < num_iterations and np.linalg.norm(cur_rhs - cur_lhs) >= 2 * eps:
         xc = (cur_lhs + cur_rhs) * 0.5
-        if function(xc - eps) > function(xc + eps):
-            cur_lhs = xc - dir_vec
+        xl = xc - dir_vec
+        xr = xc + dir_vec
+        if function(xl) > function(xr):
+            cur_lhs = xl
         else:
-            cur_rhs = xc + dir_vec
+            cur_rhs = xr
         index += 1
 
 #    print(f'bisection: Accuracy {rhs - lhs}')

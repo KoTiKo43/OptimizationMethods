@@ -19,7 +19,7 @@ def golden_ratio_multi(function: Callable[[np.ndarray], float], lhs: np.ndarray,
     fr = function (xr)
 
     index = 0
-    while index < num_iterations and np.linalg.norm(cur_rhs - cur_lhs) >= 2*eps:
+    while index < num_iterations and np.linalg.norm(cur_rhs - cur_lhs) >= 2 * eps:
         if fl > fr:
             cur_lhs = xl
             xl = xr
