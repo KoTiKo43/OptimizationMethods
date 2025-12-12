@@ -13,11 +13,11 @@ class SearchResult(namedtuple(
                 f"accuracy        = {self.accuracy}\n\n")
     
     @classmethod
-    def error(cls):
+    def error(cls, error_message="error", method_name="error"):
         return cls(
-            method_name="error",
+            method_name=method_name,
             iterations=0,
             function_probes=0,
             accuracy=0,
-            result=0
+            result=error_message
         )
