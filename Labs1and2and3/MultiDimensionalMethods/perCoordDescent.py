@@ -14,6 +14,7 @@ def per_coord_descent(function: Callable[[np.ndarray], float], x0: np.ndarray, m
     
     for _ in range(max_iters):
         x_prev = x_cur.copy()
+        significant_change = False
         
         for j in range(n):
             e_j[j] = 1.0
@@ -43,15 +44,25 @@ def per_coord_descent(function: Callable[[np.ndarray], float], x0: np.ndarray, m
             fib_result = fibonacci(func_1d, search_low, search_high, eps)
             func_probes += fib_result.function_probes
             
+            delta = abs(fib_result.result - x_cur[j])
+            if delta > eps:
+                significant_change = True
+            
             x_cur[j] = fib_result.result
 
             e_j[j] = 0
                 
         iters += 1
         
-        if np.linalg.norm(x_cur - x_prev) < eps:
-            break
+        if significant_change:
+            stable_iterations = 0
+        else:
+            stable_iterations += 1
         
+        # Если n итераций подряд не было значительных изменений, останавливаемся
+        if stable_iterations >= n:
+            break
+
     return SearchResult(
         method_name="per_coordinate_descent",
         iterations=iters,
