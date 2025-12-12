@@ -43,6 +43,8 @@ def fibonacci_multi(function: Callable[[np.ndarray], float], lhs: np.ndarray, rh
             # if np.linalg.norm(xr - xl) < delta:
             #     xl += (cur_rhs - cur_lhs) / np.linalg.norm(cur_rhs - cur_lhs) * delta
             fl = function(xl)
+
+ 
 #    print(f'fibonacci: Accuracy {rhs - lhs}')
 #    print(f'fibonacci: Function probe {iters + 2}')
     return SearchResult(

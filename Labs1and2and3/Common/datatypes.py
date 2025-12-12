@@ -6,11 +6,11 @@ class SearchResult(namedtuple(
 )):
     
     def __str__(self):
-        return (f"{self.method_name}: "
-                f"result = {self.result}, "
-                f"iterations = {self.iterations}, "
-                f"function_probes = {self.function_probes}, "
-                f"accuracy = {self.accuracy}")
+        return (f"{self.method_name}:\n"
+                f"result          = {self.result},\n"
+                f"iterations      = {self.iterations},\n"
+                f"function_probes = {self.function_probes},\n"
+                f"accuracy        = {self.accuracy}\n\n")
     
     @classmethod
     def error(cls):

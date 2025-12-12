@@ -44,7 +44,7 @@ def methods_multi_dim():
     eps = 1e-6
     result_bisection_multi = mdm.bisection_multi(quadratic_sphere, lhs, rhs, eps)
     result_golden_ratio_multi = mdm.golden_ratio_multi(quadratic_sphere, lhs, rhs, eps)
-    result_fibonacci_multi = mdm.fibonacci_multi(quadratic_sphere, lhs, rhs, eps * 2.5)
+    result_fibonacci_multi = mdm.fibonacci_multi(quadratic_sphere, lhs, rhs, eps*2.0)
     
     result_per_coord_descent = mdm.per_coord_descent(quadratic_sphere, lhs)
     #result_gradient_descent = mdm.gradient_descent(quadratic_sphere, lhs)
