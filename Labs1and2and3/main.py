@@ -46,7 +46,7 @@ def methods_multi_dim():
     #result_golden_ratio_multi = mdm.golden_ratio_multi(quadratic_sphere, lhs, rhs, eps)
     #result_fibonacci_multi = mdm.fibonacci_multi(quadratic_sphere, lhs, rhs, eps*2.0)
     
-    #result_per_coord_descent = mdm.per_coord_descent(quadratic_sphere, lhs)
+    result_per_coord_descent = mdm.per_coord_descent(quadratic_sphere, lhs)
     result_gradient_descent = mdm.gradient_descent(quadratic_sphere, lhs)
     result_conjugate_gradient = mdm.conjugate_gradient(quadratic_sphere, lhs)
     result_method_newton_raphson = mdm.method_newton_raphson(quadratic_sphere, lhs)
@@ -64,12 +64,11 @@ def methods_multi_dim():
     #print(result_golden_ratio_multi)
     #print(result_fibonacci_multi)
     
-    #print(result_per_coord_descent)
+    print(result_per_coord_descent)
     print(result_gradient_descent)
     print(result_conjugate_gradient)
     print(result_method_newton_raphson)
     
-    print("Penalty functions:")
     print(result_penalty_internal)
     print(result_penalty_external)
 

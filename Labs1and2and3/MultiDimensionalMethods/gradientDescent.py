@@ -14,7 +14,7 @@ def gradient_descent(function: Callable[[np.ndarray], float], x0: np.ndarray, ma
         iters += 1
         
         grad = compute_gradient(function, x_cur)
-        func_probes += 2 * len(x_cur)
+        func_probes += 2 * x_cur.size
         
         def f_along_gradient(lambda_val):
             return function(x_cur - lambda_val * grad)

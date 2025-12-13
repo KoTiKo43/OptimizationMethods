@@ -7,10 +7,11 @@ from OneDimensionalMethods import fibonacci
 def conjugate_gradient(function: Callable[[np.ndarray], float], x0: np.ndarray, max_iters: int = 1000, eps: float = 1e-6) -> SearchResult:
         
     x_cur = x0.copy()
+    n = x_cur.size # Размерность
     iters = 0
     
     grad_cur = compute_gradient(function, x_cur)
-    func_probes = 2 * len(x_cur)
+    func_probes = 2 * n
     
     s_cur = -grad_cur
     
@@ -31,7 +32,7 @@ def conjugate_gradient(function: Callable[[np.ndarray], float], x0: np.ndarray, 
         iters += 1
         
         grad_cur = compute_gradient(function, x_cur)
-        func_probes += 2 * len(x_cur)
+        func_probes += 2 * n
         
         omega = np.dot(grad_cur, grad_cur) / np.dot(grad_prev, grad_prev)
         

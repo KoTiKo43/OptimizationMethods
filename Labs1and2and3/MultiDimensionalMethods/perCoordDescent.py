@@ -3,7 +3,7 @@ import numpy as np
 from Common.datatypes import SearchResult
 from OneDimensionalMethods import fibonacci
 
-def per_coord_descent(function: Callable[[np.ndarray], float], x0: np.ndarray, max_iters: int = 1000, step: float = 0.1, 
+def per_coord_descent(function: Callable[[np.ndarray], float], x0: np.ndarray, max_iters: int = 1000, step: float = 10.0, 
                       eps: float = 1e-6) -> SearchResult:
     n = len(x0) # Размерность
     x_cur = x0.copy()
