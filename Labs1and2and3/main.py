@@ -19,10 +19,10 @@ def constraint1(x: np.ndarray) -> float:
     return x[0] + x[1] - 1 # x0 + x1 <= 1
 
 def constraint2(x: np.ndarray) -> float:
-    return -x[0] # x0 <= 0
+    return -x[0] # x0 >= 0
 
 def constraint3(x: np.ndarray) -> float:
-    return -x[1] # x1 <= 0
+    return -x[1] # x1 >= 0
 
 def methods_one_dim():
     lhs, rhs = 0.0, 5.0
