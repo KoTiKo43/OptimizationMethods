@@ -14,7 +14,7 @@ def method_newton_raphson(function: Callable[[float], float], x0: np.ndarray, ma
         x_prev = x_cur.copy()
         
         x_cur = x_prev - np.dot(np.linalg.inv(compute_hessian(function, x_prev, func_probes)), compute_gradient(function, x_prev))
-        func_probes += 2 * len(x_cur)
+        func_probes += 2 * x_cur.size
         
         if np.linalg.norm(x_cur - x_prev) < 2 * eps:
             break
