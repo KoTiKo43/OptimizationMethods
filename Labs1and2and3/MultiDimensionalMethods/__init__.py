@@ -6,3 +6,11 @@ from .gradientDescent import gradient_descent
 from .conjugateGradient import conjugate_gradient
 from .methodNewtonRaphson import method_newton_raphson
 from .penaltyFunctions import penalty_internal, penalty_external
+from .simplex import (
+    simplex_method,
+    SimplexResult,
+    format_problem,
+    format_simplex_table,
+    check_solution,
+    print_solution_report
+)

@@ -1,9 +1,8 @@
 import numpy as np
-from Common.datatypes import SearchResult
+from Common.datatypes import SearchResult, CompareSign, ProblemType, SimplexResult
 import OneDimensionalMethods as odm
 import MultiDimensionalMethods as mdm
 
-#TODO pip install pydantic
 
 def test_func(x: float) -> float:
     return (x - 2)**2 + 1
@@ -23,6 +22,39 @@ def constraint2(x: np.ndarray) -> float:
 
 def constraint3(x: np.ndarray) -> float:
     return -x[1] # x1 >= 0
+
+def test_simplex_examples():
+    print("\n" + "="*70)
+    print("SIMPLEX METHOD EXAMPLES")
+    print("="*70)
+    
+    # Пример 1: Задача минимизации
+    print("\nEXAMPLE 1: Minimization problem")
+    A1 = np.array([[-2, 6], [3, 2], [2, -1]])
+    b1 = np.array([40, 28, 14])
+    c1 = np.array([2, 3])
+    signs1 = [CompareSign.GREATER_EQUAL,
+              CompareSign.GREATER_EQUAL,
+              CompareSign.GREATER_EQUAL]
+    
+    print(mdm.format_problem(A1, b1, c1, signs1, ProblemType.MIN))
+    
+    result1 = mdm.simplex_method(A1, b1, c1, signs1, ProblemType.MIN)
+    print(mdm.print_solution_report(result1, A1, b1, c1, signs1))
+    
+    # Пример 2: Задача максимизации
+    print("\n\nEXAMPLE 2: Maximization problem")
+    A2 = np.array([[1, 1, 1], [4, 5, 5]])
+    b2 = np.array([2, 20])
+    c2 = np.array([1, 0, 0])
+    signs2 = [CompareSign.GREATER_EQUAL, CompareSign.LESS_EQUAL]
+    
+    print(mdm.format_problem(A2, b2, c2, signs2, ProblemType.MAX))
+    
+    result2 = mdm.simplex_method(A2, b2, c2, signs2, ProblemType.MAX)
+    print(mdm.print_solution_report(result2, A2, b2, c2, signs2))
+    
+    return [result1, result2]
 
 def methods_one_dim():
     lhs, rhs = 0.0, 5.0
@@ -65,15 +97,38 @@ def methods_multi_dim():
     #print(result_fibonacci_multi)
     
     #print(result_per_coord_descent)
-    print(result_gradient_descent)
-    print(result_conjugate_gradient)
-    print(result_method_newton_raphson)
+    #print(result_gradient_descent)
+    #print(result_conjugate_gradient)
+    #print(result_method_newton_raphson)
     
-    print("Penalty functions:")
-    print(result_penalty_internal)
-    print(result_penalty_external)
+    #print("Penalty functions:")
+    #print(result_penalty_internal)
+    #print(result_penalty_external)
 
+def methods_simplex():
+    results = test_simplex_examples()
+    
+    # Сводка результатов
+    print("\n" + "="*70)
+    print("SUMMARY OF SIMPLEX METHOD RESULTS")
+    print("="*70)
+    
+    for i, result in enumerate(results):
+        print(f"\nExample {i+1}:")
+        if result.is_feasible:
+            print(f"  Status: Optimal solution found")
+            print(f"  Solution: {result.get_solution_dict()}")
+            print(f"  Target value: {result.target_value:.4f}")
+            print(f"  Iterations: {result.iterations}")
+        elif result.is_unbounded:
+            print(f"  Status: Problem is unbounded")
+        elif result.is_infeasible:
+            print(f"  Status: Problem is infeasible")
+        else:
+            print(f"  Status: No solution found")
 
 if __name__ == "__main__":
     # methods_one_dim()
-    methods_multi_dim()
+    # methods_multi_dim()
+    methods_simplex()
+    
